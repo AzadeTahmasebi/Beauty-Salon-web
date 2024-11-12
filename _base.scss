@@ -1,0 +1,23 @@
+//Variable
+$primary-color:#262626;
+$secondary-color:#C7886F;
+$color-light:white;
+$color-dark:black;
+
+// Mixins:
+@mixin flexlayout ($justifyValue) {
+    display: flex;
+    justify-content: $justifyValue;
+    align-items: flex-start;
+    flex-flow: row wrap;
+}
+
+@mixin positionChanger ($topValue, $leftValue) {
+    position: absolute;
+    top: $topValue ;
+    left: $leftValue;
+}
+
+@mixin fontChanger ($fontSize) {
+    font-size: $fontSize;
+}

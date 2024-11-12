@@ -1,0 +1,1192 @@
+* {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: abhaya;
+    src: url(Font/AbhayaLibre-Regular.woff);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: abhaya;
+    margin: 0;
+    background-color: $color-dark;
+    color: lightgray;
+}
+
+.containerStyle {
+    width: 90%;
+    margin: auto;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/*change the color of selected elements of body */
+::selection {
+    background: $secondary-color !important;
+    color: white;
+}
+
+/* Slideshow container */
+.slideshow-container {
+    min-width: 100%;
+    position: relative;
+    overflow: hidden;
+    margin: auto;
+}
+
+div.slideshow-container div.mySlides img {
+    width: 100%;
+}
+
+/* Next & previous arrows */
+.prev,
+.next {
+    cursor: pointer;
+    padding: 16px;
+    color: $color-light;
+    font-size: 18px;
+    transition: .5s ease;
+    user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+    @include positionChanger(55%, 92%);
+}
+
+.prev {
+    @include positionChanger(55%, 4%);
+
+}
+
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+    font-size: 25px;
+}
+
+
+/* The dots/bullets/indicators */
+div.page-number {
+    @include positionChanger(90%, 47%);
+    text-align: center;
+}
+
+.dot {
+    cursor: pointer;
+    @include fontChanger(10px);
+    display: inline-block;
+    transition: .5s;
+    color: $color-light;
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+.active,
+.dot:hover {
+    color: $secondary-color !important;
+    transition: .5s;
+}
+
+/* Fading animation */
+.fade {
+    animation-name: fade;
+    animation-duration: 1s;
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+
+/*slide info & link*/
+
+div.slideshow-container div.mySlides h2 {
+    @include positionChanger(12%, 10%);
+    @include fontChanger(600px);
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.05);
+    opacity: 1;
+    margin: 0;
+}
+
+.letterBgAnime {
+    animation: letterBgAnime 1s forwards linear;
+}
+
+@keyframes letterBgAnime {
+    0% {
+        transform: translateY(1000px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+div.slideshow-container div.mySlides div.curly-img {
+    @include positionChanger(43%, 5%);
+    width: 10%;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+div.slideshow-container div.mySlides div.curly-img img {
+    width: 100%
+}
+
+.curlyImgAnime {
+    animation: curlyImgAnime .8s forwards linear;
+    animation-delay: 1.3s;
+}
+
+@keyframes curlyImgAnime {
+    0% {
+        transform: translateX(50px);
+    }
+
+    100% {
+        transform: translateX(0);
+        visibility: visible;
+    }
+
+}
+
+div.slideshow-container div.slide-info {
+    overflow: hidden;
+    @include positionChanger(40%, 18%);
+    color: $color-light;
+    width: 25%;
+    visibility: hidden;
+}
+
+.slideInfoAnime {
+    animation: slideInfoAnime .8s forwards linear;
+    animation-delay: 1.3s;
+}
+
+@keyframes slideInfoAnime {
+    0% {
+        transform: translateX(-150px);
+    }
+
+    100% {
+        transform: translateX(0);
+        visibility: visible
+    }
+
+}
+
+div.slideshow-container div.slide-info .slideTitle {
+    @include fontChanger(60px);
+    font-weight: 400;
+    margin: 0;
+}
+
+div.slideshow-container div.slide-info p {
+    margin-bottom: 30px;
+}
+
+div.slideshow-container div.slide-info a.link {
+    margin-top: 0px !important;
+}
+
+/*Header*/
+div.header-items {
+    @include positionChanger(2%, 4%);
+    @include flexlayout(flex-start);
+    color: $color-light;
+}
+
+div.header-items div.logo {
+    width: 8%;
+    padding-top:5px;
+}
+
+div.header-items div.logo img {
+    width: 100%;
+}
+
+div.header-items nav {
+    margin:0 150px;
+
+    padding-top: 30px;
+}
+
+div.header-items nav a {
+    @include fontChanger(20px);
+    padding-left: 60px;
+    transition: .5s;
+}
+
+div.header-items nav a:hover {
+    color: $secondary-color;
+}
+
+.page-mark {
+    color: $secondary-color;
+}
+
+/*icons*/
+div.icons {
+    @include flexlayout(space-between);
+    padding-top: 30px;
+
+    .switch {
+        margin: 0 10px 0 50px;
+    }
+}
+
+/*light-dark mode*/
+.switch {
+    font-size: 17px;
+    position: relative;
+    display: inline-block;
+    width: 45px;
+    height: 20px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    border: 1px solid $color-light;
+    background-color: inherit !important;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: .5s;
+    border-radius: 30px;
+}
+
+.slider:before {
+    content: "";
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 10%;
+    bottom: 12%;
+    border-radius: 50%;
+    box-shadow: inset -4px -4px 0px 0px $color-light;
+    transition: .5s;
+}
+
+
+input:checked+.slider:before {
+    transform: translateX(100%);
+    box-shadow: inset 15px -4px 0px 15px $secondary-color;
+}
+
+
+div.header-items div.contact {
+    position: relative;
+    transition: .5s;
+    overflow: hidden;
+}
+
+/*Phone Number*/
+div.header-items div.contact a {
+    color: $color-light;
+    @include fontChanger(17px);
+    transition: .5s;
+    margin-left: 30px;
+}
+
+div.header-items div.contact a:hover {
+    color: $secondary-color;
+    transition: .5s;
+}
+
+div.header-items div.contact i {
+    color: $secondary-color;
+}
+
+div.header-items div.contact a:hover i {
+    color: $color-light;
+}
+
+/*About us*/
+div.about-items {
+    overflow: hidden;
+    position: relative;
+
+    .bgDesign {
+        width: 25%;
+        @include positionChanger(68%, 75%);
+
+        img {
+            width: 100%;
+        }
+    }
+
+    div.about-us {
+        @include flexlayout(space-between);
+        padding: 100px 0;
+
+        div.about-img {
+            width: 45%;
+
+            img {
+                width: 100%;
+                position: relative;
+
+            }
+        }
+
+        .mainTitle {
+            margin-bottom: 0;
+
+        }
+
+        div.about-info {
+            width: 45%;
+        }
+    }
+}
+
+/*Why Choose us*/
+section.choosePart {
+    div.choose-bg {
+        background-image: url(img/bg02.jpg);
+        background-size: cover;
+        background-attachment: fixed;
+        height: 500px;
+        position: relative;
+
+        .mainTitle {
+            color: $color-light !important;
+            @include fontChanger(100px);
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        div.reasons-row {
+            @include flexlayout(space-between);
+            @include positionChanger(70%, 5%);
+            z-index: 5;
+
+            div.reasonCard {
+                width: 30%;
+                position: relative;
+                cursor: pointer;
+
+                span {
+                    color: lightgray;
+
+                    @include fontChanger(20px);
+                    transform: rotate(-90deg);
+                    transition: .5s;
+                }
+
+                .techniques {
+                    @include positionChanger(25%, -26%);
+                }
+
+                .reason {
+                    @include positionChanger(30%, -20%);
+                }
+
+                div.img {
+
+                    img {
+                        width: 100%;
+                    }
+                }
+
+                div.reasonInfo {
+                    @include positionChanger(0, 2%);
+                    width: 90%;
+                    border: 2px solid $secondary-color;
+                    margin: 10px;
+                    background-color: rgba(0, 0, 0, 0.534);
+                    color: $color-light;
+                    opacity: 0;
+                    transition: .5s;
+                    cursor: pointer !important;
+                    animation: reverseAnimatedInfo .8s forwards linear;
+
+                    p {
+                        margin: 0;
+                        padding: 50px 20px;
+                    }
+                }
+
+                &:hover .reasonInfo {
+                    animation: animatedInfo .8s forwards linear;
+                }
+
+                &:hover span {
+                    color: $secondary-color;
+                    transition: .5s;
+                }
+            }
+        }
+    }
+}
+
+/*Services*/
+div.services {
+    padding-bottom: 200px;
+    position: relative;
+    overflow: hidden;
+
+    .bg-design {
+        width: 30%;
+        @include positionChanger(0%, 74%);
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .mainTitle {
+        padding-top: 250px;
+    }
+
+    .serviceRow {
+        @include flexlayout(space-between);
+
+        .servicePart {
+            width: 70%;
+            position: relative;
+
+            .cardPsition {
+                @include positionChanger(0, 0);
+                visibility: hidden;
+            }
+
+            .serviceCard {
+                @include flexlayout(space-between);
+
+
+                .serviceImg {
+                    width: 40%;
+                    position: relative;
+
+
+                    img {
+                        width: 100%;
+                        @include positionChanger(0, 0);
+                        z-index: 4;
+                    }
+
+                    &::after {
+                        content: "";
+                        width: 85%;
+                        height: 280px;
+                        border: 2px solid $secondary-color;
+                        @include positionChanger(-15px, -5%);
+                    }
+                }
+
+                .serviceInfo {
+                    width: 45%;
+
+                    h3 {
+                        @include fontChanger(29px);
+                        color: $secondary-color;
+                    }
+                }
+            }
+        }
+
+        .serviceLink {
+            width: 20%;
+            margin-top: 20px;
+
+            .btn {
+                font-family: abhaya;
+                display: block;
+                border: none;
+                color: $color-light;
+                background-color: inherit;
+                padding: 10px 0;
+                cursor: pointer;
+                @include fontChanger(20px);
+                transition: .5s;
+
+
+                &:hover {
+                    color: $secondary-color;
+                    transition: .5s;
+                }
+            }
+        }
+    }
+}
+
+//Extra services
+div.extra-services {
+    padding-bottom: 50px;
+
+    .extra-row {
+        @include flexlayout(space-between);
+        padding-top: 50px;
+
+        .extra-items {
+            width: 30%;
+            transition: .5s;
+            cursor: pointer;
+            padding: 40px;
+
+            .icon-service {
+                width: 20%;
+                position: relative;
+
+                img {
+                    width: 100%;
+                }
+
+                .colorful-icon {
+                    opacity: 0;
+                    @include positionChanger(0, 0);
+
+                }
+            }
+
+            h3 {
+                @include fontChanger(30px);
+                letter-spacing: 1px;
+            }
+
+            &:hover {
+                box-shadow: inset 0 0px 20px 2px rgb(32, 31, 31);
+
+                .simple-icon {
+                    animation: reverseAnimatedInfo .8s forwards linear;
+                }
+
+                .colorful-icon {
+                    animation: animatedInfo .8s forwards linear;
+                }
+
+                .simple-icon {
+                    opacity: 0;
+
+                }
+
+                h3 {
+                    color: $secondary-color;
+                    transition: .5s;
+                }
+            }
+        }
+    }
+}
+
+/*Professional Make up*/
+section.treatment {
+    overflow: hidden;
+
+    .animaited-title {
+        @include fontChanger(140px);
+        color: rgba(255, 255, 255, 0.05);
+        margin-top: 0;
+        padding-left: 40px;
+        animation: animatedTitle 12s infinite linear;
+    }
+
+    @keyframes animatedTitle {
+        0% {
+            transform: translate(1500px);
+        }
+
+        100% {
+            transform: translate(-1000px);
+
+        }
+    }
+
+    .mainTitle {
+        margin-bottom: 0
+    }
+
+    .treatment-row {
+        @include flexlayout(space-between);
+        padding-bottom: 40px;
+
+
+        .treatment-info {
+            width: 50%;
+
+            .mainTitle {
+                @include fontChanger(60px);
+                color: $secondary-color;
+            }
+
+            .text {
+                @include fontChanger(18px);
+                padding: 70px 0;
+            }
+
+            .mainBtn {
+                margin-top: 0;
+            }
+        }
+
+        .trearment-image {
+            width: 40%;
+
+            img {
+                display: block;
+                max-width: 100%;
+            }
+
+            .container {
+                display: grid;
+                place-content: center;
+                position: relative;
+                overflow: hidden;
+                --position: 50%;
+            }
+
+            .image-container {
+                max-width: 100%;
+                max-height: 100vh;
+            }
+
+            .slider-image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: left;
+            }
+
+            .image-before {
+                @include positionChanger(0, 0);
+                width: var(--position);
+            }
+
+            .slider {
+                @include positionChanger(0, 0);
+                cursor: pointer;
+                opacity: 0;
+            }
+
+            .slider-line {
+                @include positionChanger(0, 0);
+                width: .1px;
+                height: 100%;
+                background-color: #fff;
+                /* z-index: 10; */
+                left: var(--position);
+                transform: translateX(-50%);
+                pointer-events: none;
+            }
+
+            .slider-button {
+                position: absolute;
+                background: rgba(255, 255, 255, 0.5);
+                color: white;
+                padding: .5rem;
+                border-radius: 50%;
+                display: grid;
+                place-items: center;
+                top: 50%;
+                left: var(--position);
+                transform: translate(-50%, -50%);
+                pointer-events: none;
+                /* z-index: 100; */
+                box-shadow: 1px 1px 1px hsl(0, 50%, 2%, .5);
+            }
+        }
+    }
+
+}
+
+/*Booking*/
+div.book {
+    background-image: url(img/book-now-3.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    height: 600px;
+    position: relative;
+    overflow: hidden;
+
+    .book-items {
+        .mainTitle {
+            @include fontChanger(48px);
+            padding: 40px 0;
+            margin-bottom: 0;
+        }
+
+        .calendarInfo {
+            @include positionChanger(0, 50%);
+            width: 45%;
+
+            h3 {
+                letter-spacing: 1px;
+                margin-top: 0;
+
+                span {
+                    @include fontChanger(25px);
+                    font-weight: 900;
+                }
+            }
+
+            .calendar-items {
+                @include flexlayout(space-between);
+                border-top: 1px solid gray;
+                border-bottom: 1px solid gray;
+                padding: 15px 0;
+
+                .date-item {
+                    p {
+                        @include fontChanger(18px);
+                        margin: 10px 0 2px;
+                    }
+
+                    .available {
+                        @include fontChanger(15px);
+                        padding-left: 20px;
+                        color: gray;
+                        margin: 0;
+                    }
+                }
+
+                .btn {
+                    border: none;
+                    background-color: rgb(66, 65, 65);
+                    padding: 15px 10px;
+                    color: $color-light;
+                    @include fontChanger(12px);
+                    margin-top: 5px;
+                    transition: .5s;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: #1D1D1D;
+                        transition: .5s;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*Latest Projects*/
+div.projects {
+    padding-top: 100px;
+}
+
+.container {
+    overflow: hidden;
+
+    .cards-wrapper {
+        width: 80% !important;
+
+        .cards__container {
+            padding-left: 0 !important;
+
+            .box {
+                width: 250px !important;
+                height: 100px !important;
+
+                img {
+                    width: 200%;
+                }
+            }
+        }
+    }
+}
+
+/*Our Team*/
+div.our-team {
+    padding-bottom: 200px;
+    position: relative;
+
+    .team-row {
+        @include flexlayout(space-between);
+
+        .team-member {
+            width: 28%;
+            transition: .5s;
+            cursor: pointer;
+            position: relative;
+
+
+            .member-img {
+                width: 90%;
+
+                img {
+                    width: 100%;
+                    overflow: hidden;
+                }
+            }
+
+            .team-info {
+                width: 70%;
+                text-align: center;
+                color: $color-light;
+                background-color: rgb(46, 45, 45);
+                @include positionChanger(90%, 12%);
+                transition: .5s;
+
+                h3 {
+                    @include fontChanger(20px);
+                    letter-spacing: 1px;
+                    transition: .5s;
+                    margin: 10px auto 0;
+                }
+
+                p {
+                    @include fontChanger(16px);
+                    letter-spacing: 1px;
+                }
+            }
+
+            &:hover .team-info {
+                background-color: $secondary-color;
+                transition: .5s;
+            }
+
+            .member-socialMedia {
+                @include positionChanger(20%, 70%);
+                animation: reverseAnimatedInfo .8s forwards linear;
+
+                opacity: 0;
+
+                ul {
+                    padding: 0;
+
+                    li {
+                        list-style: none;
+                        padding: 8px 10px;
+                        text-align: center;
+                        color: $color-light;
+                        @include fontChanger(18px);
+                        margin: 10px;
+                        border-radius: 50%;
+                        background-color: $secondary-color;
+                        transition: .5s;
+
+
+                        &:hover {
+                            color: $color-light;
+                            background-color: $color-dark;
+                            transition: .5s;
+                        }
+                    }
+                }
+
+            }
+
+            &:hover .member-socialMedia {
+                animation: animatedInfo .5s forwards linear;
+                opacity: 1;
+
+            }
+        }
+    }
+
+    /*Scroll top*/
+    .scroll-top {
+        width: 45px;
+        height: 45px;
+        color: rgb(190, 190, 190);
+        border: 1px solid rgb(94, 93, 93);
+        position: relative;
+        position: absolute;
+        bottom: 3%;
+        right: 2%;
+        transition: .5s;
+
+        i {
+            font-size: 22px;
+            position: absolute;
+            top: 11px;
+            left: 15px;
+            transition: .3s;
+        }
+
+        &:hover {
+            border: 1px solid $secondary-color;
+            transition: .5s;
+
+            i {
+                top: 7px;
+                color: $secondary-color;
+            }
+        }
+    }
+}
+
+/*Hair Advertisment*/
+div.advertisment {
+    background-image: url(img/home-mua1.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    height: 400px;
+    position: relative;
+
+    .adv-items {
+        .adv-img {
+            width: 30%;
+            @include positionChanger(-15%, 0);
+
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .adv-info {
+            width: 60%;
+            @include positionChanger(5%, 40%);
+
+            h3 {
+                @include fontChanger(50px);
+                letter-spacing: 1px;
+            }
+        }
+    }
+}
+
+/*Footer*/
+.footerPart {
+    background-color: $color-dark ;
+
+    .footer {
+        padding: 50px 0;
+        @include flexlayout(space-between);
+
+        .foorter-items {
+            width: 25%;
+
+            img {
+                width: 50%;
+            }
+
+            h3 {
+                @include fontChanger(20px);
+                letter-spacing: 1px;
+                margin-bottom: 0;
+            }
+
+            p {
+                color: lightgray;
+                margin: 30px 0;
+            }
+
+            .socialMedia a {
+                padding: 0 10px;
+                color: $color-light;
+                transition: .5s;
+
+
+                &:hover {
+                    color: $secondary-color;
+                    transition: .5s;
+                }
+            }
+        }
+
+        .footer-links {
+            width: 10%;
+
+            h3 {
+                @include fontChanger(20px);
+                letter-spacing: 1px;
+            }
+
+            ul {
+                padding: 0;
+
+                li {
+                    list-style: none;
+                    padding: 10px 0;
+                    color: lightgray;
+                    transition: .5s;
+
+                    &:hover {
+                        color: $secondary-color;
+                        transition: .5s;
+                    }
+                }
+            }
+
+
+        }
+
+        .footer-contact {
+            p {
+                letter-spacing: 1px;
+                color: lightgray;
+            }
+
+            i {
+                padding-right: 5px;
+                color: $secondary-color;
+            }
+        }
+    }
+
+    .footer-rights {
+        background-color: #0f0f0f !important;
+        padding: 5px 0;
+        text-align: center;
+        color: gray;
+    }
+}
+
+
+
+/*js classes*/
+//fixed Header
+div.changeHeaderPosition {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 200;
+    background-color: $primary-color;
+    backdrop-filter: blur(15px);
+    height: 85px !important;
+    transition: .5s;
+}
+
+//Changeing background color of submenu
+div.changeHeaderPosition div.submenu {
+    background-color: $primary-color ;
+}
+
+//light Mode
+.lightMode {
+    background-color: $color-light ;
+}
+
+.lightMode .mainTitle {
+    color: $primary-color;
+}
+
+.lightMode div.about-items p {
+    color: $primary-color;
+}
+
+.lightMode div.services p {
+    color: $primary-color;
+}
+
+.lightMode div.serviceLink .btn {
+    color: $primary-color !important;
+}
+
+.lightMode .selected-btn {
+    color: $secondary-color !important;
+}
+
+.lightMode div.extra-light-bg {
+    background-image: url(img/bg0011.jpg);
+    background-size: cover;
+}
+
+.lightMode .extra-items {
+    color: $primary-color;
+    box-shadow: 0 0px 20px 2px rgba(27, 27, 27, 0.26) !important;
+}
+
+
+.lightMode div.professional-light-bg {
+    background-image: url(img/bg08.jpg);
+    background-size: cover;
+}
+
+.lightMode section.treatment .animaited-title {
+    color: #cfcccc4d !important;
+}
+
+.lightMode div.treatment-info .text {
+    color: $primary-color;
+}
+
+.lightMode div.project-light-bg {
+    background-image: url(img/bg6.jpg);
+    background-size: cover;
+}
+
+.lightMode div.book .mainTitle {
+    color: white !important;
+}
+
+.lightMode div.our-team {
+    background-image: url(img/bg5.jpg);
+    background-size: cover;
+}
+
+.lightMode .lightMode .team-info {
+    color: $color-light;
+}
+
+.lightMode .team-info p {
+    color: $color-light;
+}
+
+//Showing the animated left & right items in each section by scroll
+.showLeftEffect {
+    animation: showLeftItem 1s forwards linear;
+}
+
+@keyframes showLeftItem {
+    0% {
+        transform: translateX(-1000px);
+    }
+
+    100% {
+        transform: translateX(0px);
+        visibility: visible;
+    }
+}
+
+.showRightEffect {
+    animation: showRightItem 1s forwards linear;
+}
+
+@keyframes showRightItem {
+    0% {
+        transform: translateX(1000px);
+    }
+
+    100% {
+        transform: translateX(0px);
+        visibility: visible;
+    }
+}
+
+.showFadeEffect {
+    animation: animatedInfo 1s forwards linear;
+
+}
+
+/*show the information of selected button in Services part*/
+.selected-info {
+    visibility: visible !important;
+    animation-name: fade;
+    animation-duration: 1s;
+}
+
+/*Change the color of selected button in Services part*/
+.selected-btn {
+    color: $secondary-color !important;
+}
